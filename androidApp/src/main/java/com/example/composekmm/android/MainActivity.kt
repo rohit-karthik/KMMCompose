@@ -8,10 +8,7 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -35,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
+        setContent { 1
             ComposeKMMTheme {
                 MyMainComposable("Android")
             }
@@ -45,7 +42,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyMainComposable(name: String) {
-    Surface(color = MaterialTheme.colors.background) {
+    Surface(
+        color = MaterialTheme.colors.background,
+        modifier = Modifier.fillMaxSize()
+    ) {
         Row(modifier = Modifier.padding(10.dp)) {
             Image(
                 painter = painterResource(R.drawable.dice_6),
@@ -56,10 +56,12 @@ fun MyMainComposable(name: String) {
             Column {
                 Text("Hello $name!", fontSize = 30.sp)
                 Row {
-                    Text("Hello Second!",
+                    Text(
+                        "Hello Second!",
                         modifier = Modifier.padding(10.dp)
                     )
-                    Text("Hello third!",
+                    Text(
+                        "Hello third!",
                         modifier = Modifier.padding(10.dp)
                     )
                 }
@@ -80,6 +82,7 @@ fun PreviewMyMainComposable() {
 }
 
 @Preview(
+    showBackground = true,
     name = "Dark Mode"
 )
 @Composable
